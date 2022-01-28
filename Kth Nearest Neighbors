@@ -1,0 +1,42 @@
+#Kth Nearest neighbors Algorithm in R Programming
+#all inputs must be vector or matrix
+
+function(xinput, y_outputs, xtest, k = NULL){
+    
+    n = nrow(xinput)
+    
+    sample_mode = function(data){
+        mode_name = names(sort(-table(data)))[1]
+        if (class(data) == "factor"){
+            factor(mode_name, levels = levels(data))
+        } else if (class(data) == "numeric"){
+            as.numeric(mode_name)
+        } else if (class(data) == "integer"){
+            as.integer(mode_name)
+        } else {
+            mode_name
+        }
+    }
+    
+    if(is.null(k)){
+        k = sqrt(n)
+    }
+    else if(!is.null(k)){
+        k
+    }
+    else {
+        stop("illegal arg")
+    }
+    
+    
+    distances = array(NA, n)
+    
+    for (i in 1:n) {
+        distances[i] = sum((xinput[i, ] - xtest)^2)
+        
+    }
+    order(distances)[1:k]
+    K_answers = y_outputs[order(distances)[1:k]]
+    sample_mode(K_answers)
+    
+}
