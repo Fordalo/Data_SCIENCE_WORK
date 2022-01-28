@@ -1,3 +1,20 @@
+#Nearest Neighbor Algorithm (k = 1) R PROGRAMMING
+#all inputs must be vector or matrix
+
+function(xinput, y_binary, xtest){
+    n = nrow(xinput)
+    distances = array(NA, n)
+    
+    for (i in 1:n) {
+        distances[i] = sum((xinput[i, ] - xtest)^2)
+    }
+    
+    answer = order(distances)[1]
+    y_binary[answer]
+}
+
+
+
 #Kth Nearest neighbors Algorithm in R Programming
 #all inputs must be vector or matrix
 
@@ -40,3 +57,4 @@ function(xinput, y_outputs, xtest, k = NULL){
     sample_mode(K_answers)
     
 }
+
