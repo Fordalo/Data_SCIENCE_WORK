@@ -1,4 +1,5 @@
-# perceptron algorithm for P = 2 features
+# perceptron algorithm for P = 2 features in R PZrogramming
+# if you want to add more features, add more weights after line 47
 
 Xinput = input data
 y_binary = outcomes of input data in binary
