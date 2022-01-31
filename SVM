@@ -1,2 +1,7 @@
 #Support Vector Machine Algorithm in R Programming
 #finds best linearly separating line in dataset
+
+
+linear_svm_learning_algorithm = function(Xinput, y_binary, MAX_ITER = 5000, lambda = 0.1){
+  #TO-DO
+}
