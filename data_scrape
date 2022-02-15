@@ -1,0 +1,37 @@
+from itertools import count
+import os
+import pdfplumber
+import pandas as pd
+import numpy as np
+
+directory = '/Users/damilo/Desktop/python_projects/pdf_data_extract/staples_invoices'
+filename_vec = []
+invoices = []
+cost = []
+
+
+
+for filename in os.listdir(directory):
+    try:
+        f = os.path.join(directory, filename)
+        with pdfplumber.open(f) as pdf:
+            firstpage = pdf.pages[0].extract_text()
+            invoice_number = firstpage.split('\n')[1][106:116]
+            total_amount = firstpage.split('\n')[3][111:116]
+            
+            filename_vec.append(filename)
+            invoices.append(invoice_number)
+            cost.append(total_amount)
+        
+    except Exception:
+        filename_vec.append(filename)
+        invoices.append(0)
+        cost.append(0)
+        
+        
+data = np.column_stack((filename_vec, invoices, cost))
+df = pd.DataFrame(data, columns = ['file name', 'invoice number', 'cost'])
+df.to_csv('staplesinvoices.csv', index= False)
+
+done = pd.read_csv('staplesinvoices.csv')
+print(done)
