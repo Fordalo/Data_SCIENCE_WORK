@@ -45,8 +45,8 @@ Pereceptron_training = function(Xinput, y_binary, MAX_ITER = 1000, w = NULL){
             y_i = y_binary[i]
             
             for (j in 1:length(w)) {
-+                 w[j] = w[j] + (y_i - yhat_i) * x_i[j]
-+             }
+                 w[j] = w[j] + (y_i - yhat_i) * x_i[j]
+             }
         }
     }
     
