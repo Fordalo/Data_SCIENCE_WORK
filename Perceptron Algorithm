@@ -19,7 +19,7 @@ w = w vector (weights for each input)
         e. return weights vector
 
 
-Pereceptron_training = function(Xinput, y_binary, MAX_ITER = 1000, w = NULL){
+Perceptron_training = function(Xinput, y_binary, MAX_ITER = 1000, w = NULL){
     
     observations = nrow(Xinput)
     p_star = ncol((Xinput))
